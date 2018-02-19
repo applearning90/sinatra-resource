@@ -1,0 +1,13 @@
+<h1>Edit Member Information</h1>
+
+<form action="/members/<%= @member %>" method="POST">
+	<input name="_method" type="hidden" value="put" />
+	<input type="text" name="new_name" value="<%= @member %>">
+	<input type="submit">
+</form>
+
+<% if @message %>
+	<p><%= @message %></p>
+<% end %>
+
+<a href="/members">Back</a>

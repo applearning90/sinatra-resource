@@ -1,0 +1,15 @@
+<% if @message %>
+	<p><%= @message %></p>
+<% end %>
+
+<h1>Members:</h1>
+<% if @members.empty? %>
+	<p>Sorry, no members to display</p>
+<% end %>
+<ul>
+	<% @members.each do |member| %>
+		<li><a href="/members/<%= member %>"><%= member %></a> | <a href="/members/<%= member %>/edit">Edit</a> | <a href="/members/<%= member %>/delete">Delete</a></li>
+	<% end %>
+</ul>
+
+<a href="/members/new">Add New Member</a>

@@ -1,0 +1,12 @@
+<% if @message %>
+	<p><%= @message %></p>
+<% end %>
+
+<h1>Add New Member</h1>
+
+<form action="/members" method="POST">
+	<input type="text" name="name" placeholder="Enter new member name..">
+	<input type="submit">
+</form>
+
+<a href="/members">Back</a>
