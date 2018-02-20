@@ -59,6 +59,8 @@ def delete_member(name)
     members += line unless line.chomp.eql?(name)
   end
 
+  members == '' if members == '\n'
+
   File.open("members.txt", "w") do |file|
     file.puts(members)
   end
@@ -110,7 +112,7 @@ put "/members/:name" do
   @name = params["name"]
   @new_name = params["new_name"]
   update_member(@name, @new_name)
-  @message = "Member info successfully updated"
+  session[:message] = "Member info successfully updated"
   redirect "/members/#{ @new_name}"
 end
 
@@ -124,6 +126,6 @@ delete "/members/:name" do
   # delete a member 
   @member = params["name"]
   delete_member(@member)
-  @message = "Member #{:name} successfully deleted."
+  session[:message] = "Member #{:name} successfully deleted."
   redirect "/members"
 end
